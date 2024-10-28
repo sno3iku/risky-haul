@@ -1,1 +1,1 @@
-loadstring(game:HttpGet("https://github.com/sno3iku/risky-haul/blob/main/the%20script"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/sno3iku/risky-haul/refs/heads/main/the%20script"))()
