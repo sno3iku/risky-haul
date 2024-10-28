@@ -1,0 +1,84 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "危險運輸", HidePremium = false, SaveConfig = true, ConfigFolder = "risky haul"})
+
+local Tab = Window:MakeTab({
+	Name = "外掛",
+	Icon = "e",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "方塊"
+})
+
+Tab:AddButton({
+	Name = "無限燃料 燃料箱",
+	Callback = function()
+      		game.ReplicatedStorage.FuelConfig:FindFirstChild("Fuel").Value = 1e+999
+  	end    
+})
+
+Tab:AddButton({
+	Name = "無限燃料 燃料桶",
+	Callback = function()
+      		game.ReplicatedStorage.FuelConfig:FindFirstChild("Fuel Barrel").Value = 1e+999
+  	end    
+})
+
+Tab:AddSlider({
+	Name = "一般引擎",
+	Min = 0,
+	Max = 1000,
+	Default = 1,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "速度",
+	Callback = function(Value)
+        game.ReplicatedStorage.EngineConfig:FindFirstChild("Engine").MaxSpeedBoost.Value = Value
+        game.ReplicatedStorage.EngineConfig:FindFirstChild("Engine").AccelerationBoost.Value = Value
+	end    
+})
+
+Tab:AddSlider({
+	Name = "進階引擎",
+	Min = 0,
+	Max = 1000,
+	Default = 2,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "速度",
+	Callback = function(Value)
+        game.ReplicatedStorage.EngineConfig:FindFirstChild("Diesel Engine").MaxSpeedBoost.Value = Value
+        game.ReplicatedStorage.EngineConfig:FindFirstChild("Diesel Engine").AccelerationBoost.Value = Value
+	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "人的屬性"
+})
+
+Tab:AddSlider({
+	Name = "走路速度",
+	Min = 0,
+	Max = 100,
+	Default = 16,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 5,
+	ValueName = "走路速度",
+	Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+	end    
+})
+
+Tab:AddSlider({
+	Name = "跳躍高度",
+	Min = 0,
+	Max = 500,
+	Default = 50,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 5,
+	ValueName = "跳躍高度",
+	Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+	end    
+})
